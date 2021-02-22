@@ -102,10 +102,6 @@ export default defineComponent({
     };
     const handleCard = async (card: any) => {
       router.push("/home/songlistdetails?id=" + card.id);
-
-      // trackIdsRef.value = res.playlist.trackIds; // 歌曲的id数组
-      // const songRes = await getSoneAllInfo(trackIdsRef.value);
-      // console.log(songRes);
     };
     return {
       tags,

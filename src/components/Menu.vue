@@ -2,7 +2,16 @@
   <div class="menu-wrapper">
     <ul>
       <li>
+        <router-link to="/home/recommend">个性推荐</router-link>
+      </li>
+      <li>
         <router-link to="/home/songsheet">歌单</router-link>
+      </li>
+      <li>
+        <router-link to="/home/singer">歌手</router-link>
+      </li>
+      <li>
+        <router-link to="/home/rankinglist">排行榜</router-link>
       </li>
     </ul>
   </div>
@@ -30,6 +39,7 @@ export default {};
 .menu-wrapper ul li {
   width: 100%;
   text-align: center;
+  margin-bottom: 15px;
   height: 35px;
   line-height: 35px;
 }

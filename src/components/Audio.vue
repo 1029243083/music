@@ -48,7 +48,9 @@
         <SongList :songListInfo="songListRef" />
       </div>
     </div>
-    <div class="song-info-play" v-if="isshowInfoPlay">sss</div>
+    <div class="song-info-play" v-if="isshowInfoPlay">
+      <Lyric :type="type" />
+    </div>
   </div>
 </template>
 
@@ -66,6 +68,7 @@ import { getSongUrl } from "../Axios/axiosFuns";
 import { arType, IState } from "../Store";
 import defaultImg from "../assets/av.jpg";
 import SongList from "../components/SongList.vue";
+import Lyric from "../components/Lyric.vue";
 import {
   StepBackwardOutlined,
   CaretRightOutlined,
@@ -83,6 +86,7 @@ export default defineComponent({
     PauseCircleOutlined,
     BarsOutlined,
     SongList,
+    Lyric,
   },
   setup() {
     const store: Store<IState> = useStore();
@@ -101,6 +105,7 @@ export default defineComponent({
     const songListRef: Ref<any[]> = ref([]);
     const isShowList: Ref<boolean> = ref(false);
     const isshowInfoPlay: Ref<boolean> = ref(false);
+    const type: Ref<string> = ref("");
 
     let Auiod: any = null;
     const getItemRef = (el: any) => {
@@ -121,7 +126,9 @@ export default defineComponent({
        * 开始播放
        * 开始进度条
        */
+
       if (!store.state.song.id) return;
+
       value1.value = 0;
       const res = await getSongUrl(store.state.song.id); // 根据id获取音乐的url
 
@@ -187,17 +194,16 @@ export default defineComponent({
      * 播放 / 暂停
      */
     const isPlay = () => {
-      console.log(Auiod.paused);
       if (!Auiod.paused) {
         // 正在播放
         Auiod.pause();
+        type.value = "pause";
         show.value = true;
         if (timer1) {
           clearInterval(timer1);
         }
       } else {
         if (isOk.value) {
-          console.log("ss");
           value1.value = 0;
           currentVlaue.value = "00:00";
           songTime.value = ((Auiod.duration as number) / 60)
@@ -214,6 +220,7 @@ export default defineComponent({
           }, 800);
         }
         Auiod.play();
+        type.value = "play";
         show.value = false;
         timer1 = setInterval(() => {
           value1.value++;
@@ -296,6 +303,7 @@ export default defineComponent({
       songListRef,
       isshowInfoPlay,
       changeIshowInfoPlay,
+      type,
     };
   },
 });
@@ -417,6 +425,5 @@ export default defineComponent({
   left: 0;
   right: 0;
   bottom: 62px;
-  background-color: red;
 }
 </style>

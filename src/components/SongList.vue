@@ -14,7 +14,7 @@
       @click="playSone(song, song.id, i)"
       :class="{ active: i === current }"
     >
-      <div class="index">{{ i > 10 ? i : "0" + (i + 1) }}</div>
+      <div class="index">{{ i + 1 }}</div>
       <div class="title">
         <span>{{ song.name }}</span>
         <span>

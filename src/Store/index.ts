@@ -45,14 +45,15 @@ const store: Store<IState> = createStore({
             state.user = userInfo;
         },
         setSong(state: IState, songInfo: song) {
-            state.song = songInfo
+            state.song = songInfo;
         },
         setSongList(state: IState, songList: song[]) {
             state.songList = songList;
         },
         setIndex(state: IState, index: number) {
             state.index = index;
-            state.song = state.songList[state.index]
+            if (!state.songList[state.index]) return;
+            store.commit('setSong', state.songList[state.index])
         }
     },
     actions: {

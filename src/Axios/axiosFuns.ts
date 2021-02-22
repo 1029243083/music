@@ -1,3 +1,4 @@
+import { AxiosResponse } from 'axios';
 import axios from './index';
 
 /**
@@ -55,6 +56,10 @@ export async function getSoneAllInfo(ids: any[]) {
     return res.data;
 }
 
+/**
+ * 
+ * 获取音乐的url
+ */
 export async function getSongUrl(id: number | number[]) {
     if (typeof id === 'number') {
         return await axios.get(`/song/url?id=${id}`);
@@ -64,4 +69,96 @@ export async function getSongUrl(id: number | number[]) {
     } else {
         return null
     }
+}
+
+/**
+ * 获取音乐评论
+ * @param id 
+ * @param limit 
+ */
+export async function getCommit(id: number, limit: number) {
+    return await (await axios.get(`/comment/music?id=${id}&limit=${limit}`)).data;
+}
+
+/**
+ * 获取歌手
+ * @param limit 获取数量 
+ * @param type 根据分类来选
+ * @param area 根据语种来选
+ * @param initial 根据name来选
+ */
+export async function getSinger(limit: number, type: number, area: number, initial: number) {
+    const res = await axios.get(`/artist/list?type=${type}&area=${area}&initial=${initial}&limit=${limit}`);
+    return res.data;
+}
+
+/**
+ * 获取歌手详情
+ * @param id 歌手id
+ */
+export async function getSingerInfo(id: string) {
+    const res = await axios.get(`/artist/detail?id=${id}`);
+    return res.data
+}
+
+/**
+ * 可以获取歌手的部分信息和热门歌曲
+ * @param id 歌手id
+ */
+export async function getSingerSong(id: string) {
+    const res = await axios.get(`/artists?id=${id}`);
+    return res.data
+}
+
+/**
+ * 获取歌手描述
+ * @param id 歌手id
+ */
+export async function getSingerMess(id: string) {
+    const res = await axios.get(`/artist/desc?id=${id}`);
+    return res.data
+}
+
+/**
+ * 获取相似歌手
+ * @param id 歌手id
+ */
+export async function getSimiSinger(id: string) {
+    const res = await axios.get(`/simi/artist?id=${id}`);
+    return res.data
+}
+
+/**
+ * 获取所用的排行榜
+ */
+export async function getToplist() {
+    const res: AxiosResponse<{ list: any[] }> = await axios.get(`/toplist`);
+    return res.data
+}
+
+/**
+ * 获取搜索数据
+ * @param keywords 关键字
+ * @param limit 条数
+ * @param type 类型
+ */
+export async function search(keywords: string, limit: number = 10, type: number = 1) {
+    const res = await axios.get(`/cloudsearch?keywords=${keywords}&limit=${limit}&type=${type}`);
+    return res.data;
+}
+
+/**
+ * 获取轮播图数据
+ */
+export async function getBanner() {
+    const res = await axios.get(`/banner?type=0`);
+    return res.data
+}
+
+/**
+ * 推荐歌单
+ */
+export async function getPersonalized() {
+    const res = await axios.get(`/personalized?limit=10`);
+    return res.data
 }
