@@ -21,13 +21,13 @@
         {{ nameRef ? nameRef : "去登录" }}
       </div>
 
-      <a-button
+      <Button
         type="dashed"
         ghost
         class="outLogin"
         @click="outLogin"
         v-if="nameRef"
-        >退出登陆</a-button
+        >退出登陆</Button
       >
     </div>
   </div>
@@ -39,6 +39,7 @@ import { Store, useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { IState } from "../Store";
 import { SearchOutlined } from "@ant-design/icons-vue";
+import { Button } from "ant-design-vue";
 import img from "../assets/av.jpg";
 import Search from "../components/Search/index.vue";
 import { search } from "../Axios/axiosFuns";
@@ -46,6 +47,7 @@ export default defineComponent({
   components: {
     SearchOutlined,
     Search,
+    Button,
   },
   setup() {
     const store: Store<IState> = useStore();
@@ -138,6 +140,7 @@ export default defineComponent({
 }
 .title {
   font-size: 16px;
+  line-height: 66px;
   color: #fff;
   font-weight: bold;
 }
@@ -183,7 +186,7 @@ export default defineComponent({
 }
 .icon {
   position: absolute;
-  top: -16px;
+  top: 4px;
   right: 0;
   width: 20px;
   margin-left: 5px;

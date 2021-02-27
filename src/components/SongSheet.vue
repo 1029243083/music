@@ -22,7 +22,7 @@
   </div>
 
   <div class="pagination-wrapper">
-    <a-pagination
+    <Pagination
       v-model:current="offset"
       :total="totalRef"
       @change="offsetChange"
@@ -37,18 +37,16 @@
 // 全部歌单列表页
 import { defineComponent, Ref, ref } from "vue";
 import { useRouter } from "vue-router";
-import {
-  getPlaylistHot,
-  getSoneAllInfo,
-  getSongSheetInfo,
-} from "../Axios/axiosFuns";
+import { getPlaylistHot } from "../Axios/axiosFuns";
 import { getData } from "./ts";
 import Card from "./SongSheetCard.vue";
 import Loading from "./Loading.vue";
+import { Pagination } from "ant-design-vue";
 export default defineComponent({
   components: {
     Card,
     Loading,
+    Pagination,
   },
   setup() {
     const tags: Ref<object[]> = ref([]);
@@ -59,7 +57,6 @@ export default defineComponent({
     const totalRef: Ref<number> = ref(0);
     const orderRef: Ref<"new" | "hot"> = ref("hot");
     const showRef: Ref<boolean> = ref(false);
-    const trackIdsRef: Ref<object[]> = ref([]); // 歌曲的id数组
     const router = useRouter();
 
     (async () => {

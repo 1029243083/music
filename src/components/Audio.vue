@@ -30,7 +30,7 @@
         <span>{{ currentVlaue ? currentVlaue : "00:00" }}</span>
 
         <div>
-          <a-slider
+          <Slider
             id="test"
             :tipFormatter="null"
             @change="silderChange"
@@ -55,20 +55,14 @@
 </template>
 
 <script lang='ts'>
-import {
-  defineComponent,
-  watchEffect,
-  onMounted,
-  ref,
-  Ref,
-  computed,
-} from "vue";
+import { defineComponent, watchEffect, onMounted, ref, Ref } from "vue";
 import { Store, useStore } from "vuex";
 import { getSongUrl } from "../Axios/axiosFuns";
 import { arType, IState } from "../Store";
 import defaultImg from "../assets/av.jpg";
 import SongList from "../components/SongList.vue";
 import Lyric from "../components/Lyric.vue";
+
 import {
   StepBackwardOutlined,
   CaretRightOutlined,
@@ -76,7 +70,7 @@ import {
   PauseCircleOutlined,
   BarsOutlined,
 } from "@ant-design/icons-vue";
-import { message } from "ant-design-vue";
+import { message, Slider } from "ant-design-vue";
 
 export default defineComponent({
   components: {
@@ -87,6 +81,7 @@ export default defineComponent({
     BarsOutlined,
     SongList,
     Lyric,
+    Slider,
   },
   setup() {
     const store: Store<IState> = useStore();
@@ -312,10 +307,11 @@ export default defineComponent({
 <style scoped>
 .box {
   position: relative;
+  height: 100%;
   display: flex;
   align-items: center;
+  padding: 0 10px;
   box-sizing: border-box;
-  padding: 5px 10px;
   background-color: rgb(68, 68, 68);
   color: rgb(223, 223, 223);
 }
@@ -346,6 +342,8 @@ export default defineComponent({
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding-top: 10px;
   width: 600px;
   height: 100%;
   color: rgb(214, 214, 214);

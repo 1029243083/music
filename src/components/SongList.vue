@@ -67,7 +67,7 @@ export default defineComponent({
     const getDuration = (duration: number) => {
       return (duration / 1000 / 60).toFixed(2).replace(/\./, ":");
     };
-    const playSone = (song: any, id: number, i: number) => {
+    const playSone = (song: any, i: number) => {
       store.commit("setSong", song);
       store.commit("setIndex", i);
       current.value = store.state.index;

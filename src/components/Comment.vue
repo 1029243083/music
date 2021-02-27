@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, watchEffect, computed } from "vue";
+import { defineComponent, ref, Ref, watchEffect } from "vue";
 import { getCommit } from "../Axios/axiosFuns";
 export default defineComponent({
   props: ["id"],

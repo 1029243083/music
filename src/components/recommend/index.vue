@@ -1,10 +1,10 @@
 <template>
   <div class="banner-wrapper">
-    <a-carousel :after-change="onChange" autoplay>
+    <Carousel :after-change="onChange" autoplay>
       <div v-for="item in bannerRef" :key="item.encodeId" class="img-box">
         <img :src="item.imageUrl" alt="" />
       </div>
-    </a-carousel>
+    </Carousel>
   </div>
   <div class="text">推荐歌单</div>
   <div class="list">
@@ -22,9 +22,12 @@ import { defineComponent, ref, Ref } from "vue";
 import { getBanner, getPersonalized } from "../../Axios/axiosFuns";
 import Card from "./Card.vue";
 import { useRouter } from "vue-router";
+import { Carousel } from "ant-design-vue";
+
 export default defineComponent({
   components: {
     Card,
+    Carousel,
   },
   setup() {
     const bannerRef: Ref<any[]> = ref([]);

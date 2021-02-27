@@ -4,14 +4,14 @@
       <div class="box-info">
         <span>用户名:</span>
         <div class="inp-wrapper">
-          <a-input v-model:value="loginId" placeholder="输入手机号" />
+          <Input v-model:value="loginId" placeholder="输入手机号" />
         </div>
       </div>
 
       <div class="box-info">
         <span>密码:</span>
         <div class="inp-wrapper">
-          <a-input
+          <Input
             v-model:value="loginPwd"
             placeholder="输入密码"
             type="password"
@@ -19,19 +19,23 @@
         </div>
       </div>
 
-      <a-button type="primary" ghost class="loginBtn" @click="login"
-        >Login</a-button
+      <Button type="primary" ghost class="loginBtn" @click="login"
+        >Login</Button
       >
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { message } from "ant-design-vue";
+import { message, Input, Button } from "ant-design-vue";
 import { defineComponent, Ref, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 export default defineComponent({
+  components: {
+    Input,
+    Button,
+  },
   setup() {
     const loginId: Ref<string> = ref("");
     const loginPwd: Ref<string> = ref("");

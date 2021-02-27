@@ -50,11 +50,7 @@
 </template>
 
 <script lang="ts">
-import {
-  getPlaylistHot,
-  getSoneAllInfo,
-  getSongSheetInfo,
-} from "../Axios/axiosFuns";
+import { getSoneAllInfo, getSongSheetInfo } from "../Axios/axiosFuns";
 import { CaretRightOutlined } from "@ant-design/icons-vue";
 import { useRoute } from "vue-router";
 import { defineComponent, Ref, ref } from "vue";
@@ -77,7 +73,6 @@ export default defineComponent({
     const soneCount: Ref<number> = ref(0);
     const palyCount: Ref<number> = ref(0);
     const descRef: Ref<string> = ref("");
-    const trackIdsRef: Ref<any[]> = ref([]);
     const songListInfo: Ref<any> = ref([]);
 
     const route = useRoute();
