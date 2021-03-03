@@ -11,7 +11,7 @@
       class="song-wrapper"
       v-for="(song, i) in songList"
       :key="song.id"
-      @click="playSone(song, song.id, i)"
+      @click="playSone(song, i, song.id)"
       :class="{ active: i === current }"
     >
       <div class="index">{{ i + 1 }}</div>
@@ -70,6 +70,7 @@ export default defineComponent({
     const playSone = (song: any, i: number) => {
       store.commit("setSong", song);
       store.commit("setIndex", i);
+
       current.value = store.state.index;
     };
     return {

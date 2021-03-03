@@ -98,7 +98,7 @@ export default defineComponent({
       showRef.value = false;
     };
     const handleCard = async (card: any) => {
-      router.push("/home/songlistdetails?id=" + card.id);
+      router.push("/songlistdetails?id=" + card.id);
     };
     return {
       tags,

@@ -50,7 +50,7 @@ export default defineComponent({
      * 点击歌手
      */
     const handleClick = (data: ISingerType) => {
-      router.push(`/home/singerandsong?id=${data.id}`);
+      router.push(`/singerandsong?id=${data.id}`);
     };
 
     return {

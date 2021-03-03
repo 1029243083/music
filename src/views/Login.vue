@@ -54,7 +54,7 @@ export default defineComponent({
         .then((res) => {
           if (res) {
             message.success("登录成功");
-            router.push("/home");
+            router.push("/");
           } else {
             message.error("登录失败");
           }

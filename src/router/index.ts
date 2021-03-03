@@ -1,23 +1,29 @@
-import { createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
+import { createRouter, RouteRecordRaw, createWebHashHistory } from 'vue-router';
+import Home from "../views/Home.vue";
+import recommend from '../components/recommend/index.vue';
+import songsheet from '../components/SongSheet.vue';
+import singer from '../components/Singer/index.vue';
+import rankinglist from '../components/RankingList/index.vue';
+import songlistdetails from '../components/SongListDetails.vue';
+import singerandsong from '../components/Singer/SingerAndSong.vue';
+
 
 const routes: RouteRecordRaw[] = [
-    { path: '/', redirect: '/home/recommend' },
     { path: "/login", component: import('../views/Login.vue') },
     {
-        path: '/home', component: import('../views/Home.vue'), redirect: '/home/recommend',
-        children: [
-            { path: 'songsheet', component: import('../components/SongSheet.vue') },
-            { path: 'songlistdetails', component: import('../components/SongListDetails.vue') },
-            { path: 'singer', component: import('../components/Singer/index.vue') },
-            { path: 'singerandsong', component: import('../components/Singer/SingerAndSong.vue') },
-            { path: 'rankinglist', component: import('../components/RankingList/index.vue') },
-            { path: 'recommend', component: import('../components/recommend/index.vue') }
+        path: '/', component: Home, children: [
+            { path: '/recommend', component: recommend },
+            { path: '/songsheet', component: songsheet },
+            { path: '/singer', component: singer },
+            { path: '/rankinglist', component: rankinglist },
+            { path: '/songlistdetails', component: songlistdetails },
+            { path: '/singerandsong', component: singerandsong },
         ]
-    }
+    },
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes
 })
 

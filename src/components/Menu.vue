@@ -2,16 +2,16 @@
   <div class="menu-wrapper">
     <ul>
       <li>
-        <router-link to="/home/recommend">个性推荐</router-link>
+        <router-link to="/recommend">个性推荐</router-link>
       </li>
       <li>
-        <router-link to="/home/songsheet">歌单</router-link>
+        <router-link to="/songsheet">歌单</router-link>
       </li>
       <li>
-        <router-link to="/home/singer">歌手</router-link>
+        <router-link to="/singer">歌手</router-link>
       </li>
       <li>
-        <router-link to="/home/rankinglist">排行榜</router-link>
+        <router-link to="/rankinglist">排行榜</router-link>
       </li>
     </ul>
   </div>

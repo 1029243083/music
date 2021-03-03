@@ -63,7 +63,7 @@ export default defineComponent({
       }
     };
     const handleClick = (id: number) => {
-      router.push(`/home/singerandsong?id=${id}`);
+      router.push(`/singerandsong?id=${id}`);
     };
     return {
       songList,
