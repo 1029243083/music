@@ -17,10 +17,11 @@ module.exports = {
 			jsx: true
 		},
 		requireConfigFile: false,
-		parser: '@babel/eslint-parser'
+		parser: '@typescript-eslint/parser'
 	},
 	// eslint-plugin-vue
 	plugins: [
+		'@typescript-eslint',
 		'vue' // 引入vue的插件 vue <==> eslint-plugin-vue
 	],
 	globals: {
@@ -85,7 +86,7 @@ module.exports = {
 		'vue/max-attributes-per-line': ['warn', { singleline: 5 }],
 		// 要求html标签的缩进为需要4个空格
 		'vue/html-indent': [
-			'error',
+			'off',
 			'tab',
 			{
 				attribute: 1,

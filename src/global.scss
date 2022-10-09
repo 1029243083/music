@@ -1,0 +1,22 @@
+@mixin flex-center($items, $content: flex-start) {
+	display: flex;
+	align-items: $items;
+	justify-content: $content;
+}
+
+@mixin scroll() {
+	&::-webkit-scrollbar {
+		width: 4px;
+		height: 4px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: 5px;
+		background-color: #8e8e8e;
+	}
+
+	&::-webkit-scrollbar-track {
+		border-radius: 5px;
+		background-color: #dedede28;
+	}
+}
